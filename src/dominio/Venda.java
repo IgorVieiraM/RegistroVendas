@@ -1,6 +1,6 @@
 package dominio;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 public class Venda {
 
@@ -23,9 +23,7 @@ public class Venda {
         }
         public double somarProdutos(){
            double somaProdutos = 0;
-            for (double produto: produtos){
-                somaProdutos += produto;
-            }
+            for (double produto: produtos) somaProdutos += produto;
             return somaProdutos;
         }
         public double[] aplicarDesconto(double desconto){
@@ -36,6 +34,7 @@ public class Venda {
             double[] result = {valorDoDesconto,valorComDesconto};
             return result;
         }
+
         public double pagandoCompra(){
             switch (pagarCompra){
                 case PAGAMENTO_PIX:
