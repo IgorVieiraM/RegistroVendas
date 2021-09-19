@@ -8,12 +8,33 @@ public class Venda {
     private double valorAPagar = 0;
     private double valorAcrescimo = 0;
     private double valorDesconto = 0;
+    private int quantidade;
     private String tipoVenda;
     PagarCompra pagarCompra ;
 
-        public Venda(int produto){
-            this.produtos = new double[produto];
+
+    public Venda() {
+    }
+    public void setVenda(int produto){
+        this.produtos = new double[produto];
+    }
+
+    public int verificarQuantidadeDeItens(){
+
+            while (true) {
+                try {
+                    quantidade = Integer.parseInt(JOptionPane.showInputDialog("Digite a quantidade total de itens: "));
+
+                }catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Digito inválido!", "", JOptionPane.ERROR_MESSAGE);
+                    verificarQuantidadeDeItens();
+                }
+                break;
+            }
+            return quantidade;
         }
+
+
         public void addprodutos(){
             int i;
             for(i = 0; i < this.produtos.length;i++){
@@ -26,15 +47,6 @@ public class Venda {
             for (double produto: produtos) somaProdutos += produto;
             return somaProdutos;
         }
-        public double[] aplicarDesconto(double desconto){
-
-            double valorProdutos = somarProdutos();
-            double valorDoDesconto = valorProdutos * desconto /100;
-            double valorComDesconto = valorProdutos - valorDoDesconto;
-            double[] result = {valorDoDesconto,valorComDesconto};
-            return result;
-        }
-
         public double pagandoCompra(){
             switch (pagarCompra){
                 case PAGAMENTO_PIX:
