@@ -34,7 +34,6 @@ public class Venda {
             return quantidade;
         }
 
-
         public void addprodutos(){
             int i;
             for(i = 0; i < this.produtos.length;i++){
